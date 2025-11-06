@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 
+typedef unsigned int uint;
 
 class Bureaucrat;
 
@@ -38,7 +39,7 @@ public:
 	AForm(const std::string name, const uint gradeToExec, const uint gradeToSign);
 	AForm(const AForm& other);
 	AForm &operator=(const AForm& other);
-	~AForm();
+	virtual ~AForm();
 
 	const std::string getName( void ) const ;
     uint getGradeToExec( void ) const ;

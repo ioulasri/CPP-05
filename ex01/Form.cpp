@@ -61,12 +61,17 @@ const std::string Form::getName() const
     return (_name);
 }
 
-void       Form::beSigned(const Bureaucrat &bureaucrat)
+void Form::beSigned(const Bureaucrat &bureaucrat)
 {
-    if (bureaucrat.getGrade() > _gradeToSign)
+    if (_isSigned)
+        std::cout << "Form already signed!\n";
+    else if (bureaucrat.getGrade() > _gradeToSign)
         throw GradeTooLowException();
-    _isSigned = true;
-    std::cout << "bureaucrat " << bureaucrat.getName() << " has succesfully signed the Form " << this->getName() << "\n"; 
+    else {
+        _isSigned = true;
+        std::cout << "bureaucrat " << bureaucrat.getName() 
+                  << " has successfully signed the Form " << this->getName() << "\n";
+    }
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &Form)

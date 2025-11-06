@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target)
-    : AForm("Presidential Pardon", 5, 25), _target(target)
+    : AForm("Presidential Pardon", 25, 5), _target(target)
 {
 }
 

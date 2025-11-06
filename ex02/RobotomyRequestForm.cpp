@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target)
-    : AForm("Robotomy Request", 45, 72), _target(target)
+    : AForm("Robotomy Request", 72, 45), _target(target)
 {
 }
 
@@ -33,7 +33,12 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
     
     std::cout << "* DRILLING NOISES *" << std::endl;
     
-    std::srand(std::time(NULL));
+    static bool seeded = false;
+    if (!seeded) {
+        std::srand(std::time(NULL));
+        seeded = true;
+    }
+    
     if (std::rand() % 2) {
         std::cout << _target << " has been robotomized successfully!" << std::endl;
     } else {
